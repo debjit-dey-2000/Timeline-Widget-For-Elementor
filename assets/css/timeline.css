@@ -1,0 +1,364 @@
+/* =========================================
+   Timeline Widget for Elementor — Stylesheet
+   ========================================= */
+
+/* ── Reset & Base ── */
+.twe-timeline-wrapper *,
+.twe-timeline-wrapper *::before,
+.twe-timeline-wrapper *::after {
+    box-sizing: border-box;
+}
+
+.twe-title,
+.twe-date,
+.twe-description {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   LAYOUT 1: LEFT (default)
+   ========================================= */
+
+.twe-timeline {
+    position: relative;
+    padding-left: 36px;
+}
+
+/* Track line — top & height set by JS (first icon centre → last icon centre) */
+.twe-timeline .twe-line-track {
+    position: absolute;
+    left: 23px;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+    z-index: 0;
+    border-radius: 2px;
+}
+
+/* Scroll-fill overlay — left layout */
+.twe-timeline .twe-line-fill {
+    position: absolute;
+    left: 23px;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: height 0.08s linear;
+    border-radius: 2px;
+}
+
+/* Each item row — z-index: 2 creates a stacking context above the fill (z-index: 1) */
+.twe-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.twe-item:not(:last-child) {
+    margin-bottom: 36px;
+}
+
+/* Icon/marker */
+.twe-icon {
+    position: relative;
+    z-index: 3;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e0e0e0;
+}
+
+.twe-icon i {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.twe-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+}
+
+/* Card */
+.twe-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.twe-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Date badge */
+.twe-date {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    margin-bottom: 6px;
+}
+
+/* Title */
+.twe-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+/* Description */
+.twe-description {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.65;
+}
+
+/* =========================================
+   LAYOUT 2: ALTERNATING (zigzag)
+   ========================================= */
+
+.twe-timeline-alternate-wrapper .twe-timeline-alternate {
+    position: relative;
+    padding: 0 0 40px;
+}
+
+/* Track line — sized by JS */
+.twe-timeline-alternate .twe-line-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+    z-index: 0;
+    border-radius: 2px;
+}
+
+/* Scroll-fill overlay — alternate layout */
+.twe-timeline-alternate .twe-line-fill {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: height 0.08s linear;
+    border-radius: 2px;
+}
+
+.twe-alt-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    width: 50%;
+    margin-bottom: 40px;
+}
+
+/* Items on the LEFT side */
+.twe-alt-item.twe-left {
+    flex-direction: row-reverse;
+    margin-left: 0;
+    padding-right: calc(48px / 2 + 20px);
+}
+
+.twe-alt-item.twe-left .twe-card {
+    text-align: right;
+}
+
+.twe-alt-item.twe-left .twe-date {
+    display: block;
+}
+
+/* Items on the RIGHT side */
+.twe-alt-item.twe-right {
+    flex-direction: row;
+    margin-left: 50%;
+    padding-left: calc(48px / 2 + 20px);
+}
+
+/* Alternating icon centered on the line */
+.twe-alt-icon {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e0e0e0;
+    flex-shrink: 0;
+}
+
+.twe-alt-item.twe-left .twe-alt-icon {
+    right: calc(-48px / 2);
+}
+
+.twe-alt-item.twe-right .twe-alt-icon {
+    left: calc(-48px / 2);
+}
+
+.twe-alt-icon i {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.twe-alt-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+}
+
+/* Responsive: collapse alternate to left on mobile */
+@media (max-width: 767px) {
+    .twe-timeline-alternate .twe-line-track,
+    .twe-timeline-alternate .twe-line-fill {
+        left: 23px;
+        transform: translateX(-50%);
+    }
+
+    .twe-alt-item {
+        width: 100%;
+        margin-left: 0 !important;
+        flex-direction: row !important;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+    }
+
+    .twe-alt-item .twe-card {
+        text-align: left !important;
+    }
+
+    .twe-alt-item.twe-left .twe-alt-icon,
+    .twe-alt-item.twe-right .twe-alt-icon {
+        position: absolute;
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
+/* =========================================
+   LAYOUT 3: CENTER LINE
+   ========================================= */
+
+.twe-timeline-center-wrapper .twe-timeline-center {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Track line — sized by JS */
+.twe-timeline-center .twe-line {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background-color: #e0e0e0;
+    z-index: 0;
+    border-radius: 2px;
+}
+
+/* Scroll-fill overlay — center layout */
+.twe-timeline-center .twe-line-fill {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+    z-index: 1;
+    transition: height 0.08s linear;
+    border-radius: 2px;
+}
+
+.twe-center-item {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 520px;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.twe-center-icon {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e0e0e0;
+    flex-shrink: 0;
+}
+
+.twe-center-icon i {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.twe-center-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+}
+
+.twe-center-card {
+    text-align: center;
+    width: 100%;
+}
+
+/* =========================================
+   SCROLL ANIMATION
+   ========================================= */
+
+.twe-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.twe-animate.twe-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Elementor editor: always show */
+.elementor-editor-active .twe-animate {
+    opacity: 1;
+    transform: none;
+}
