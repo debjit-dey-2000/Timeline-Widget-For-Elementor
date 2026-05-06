@@ -82,3 +82,20 @@ final class Timeline_Widget_Elementor {
 }
 
 Timeline_Widget_Elementor::instance();
+
+
+
+/**
+ * Add "Visit plugin site" link in plugin meta row
+ */
+add_filter( 'plugin_row_meta', 'twfe_plugin_meta_links', 10, 2 );
+
+function twfe_plugin_meta_links( $links, $file ) {
+
+    if ( plugin_basename( __FILE__ ) === $file ) {
+
+        $links[] = '<a href="https://github.com/debjit-dey-2000/Timeline-Widget-For-Elementor.git" target="_blank" >Visit plugin site</a>';
+    }
+
+    return $links;
+}
