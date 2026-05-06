@@ -83,9 +83,24 @@ All style options live in the **Style** tab:
 
 ---
 
-## Changelog
+# Changelog
 
-### 1.2.1
+All notable changes to this project will be documented in this file.
+
+## [1.2.0]
+### Added
+- Added responsive breakpoint controls for desktop, tablet, and mobile
+- Improved widget responsiveness across different screen sizes
+- Enhanced layout adaptability for smaller devices
+
+## [1.1.0]
+### Fixed
+- Improved scroll line animation behavior
+- Fixed multiple CSS styling and layout issues
+- Enhanced frontend stability and smoothness
+
+## [1.0.0]
+### Added
 - Initial release
 - 3 layout modes: left, alternate, center
 - Repeater items with icon, date, title, description, accent colour
