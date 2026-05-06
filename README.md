@@ -85,7 +85,7 @@ All style options live in the **Style** tab:
 
 ## Changelog
 
-### 1.0.0
+### 1.2.1
 - Initial release
 - 3 layout modes: left, alternate, center
 - Repeater items with icon, date, title, description, accent colour
