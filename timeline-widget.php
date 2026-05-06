@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Timeline Widget for Elementor Page Builder
  * Description: A beautiful, fully responsive, and animated vertical timeline widget for Elementor page builder. Create stunning timelines for company history, project roadmaps, milestones, achievements, events, process flows, and storytelling sections with ease. Designed with smooth animations, modern UI styles, and flexible customization options, this widget helps you build engaging timeline layouts without writing a single line of code.
- * Version: 1.2.1
+ * Version: 1.2.0
  * Author: Debjit Dey
  * Text Domain: timeline-widget-elementor
  * Requires at least: 5.6
